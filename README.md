@@ -79,6 +79,3 @@ All findings documented here followed a consistent and ethical process:
 No private communications, responses, acknowledgements, or outcomes are included, as they are outside my control.
 
 ---
-
-## Repository Structure
-
