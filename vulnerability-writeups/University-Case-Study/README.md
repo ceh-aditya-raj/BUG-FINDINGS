@@ -1,0 +1,128 @@
+\# Case Study: Backend Query Handling Failure in an Academic System
+
+
+
+\## Context
+
+A public-facing academic web application was analyzed as part of independent security research.  
+
+The system handled admissions-related workflows and processed data at institutional scale.
+
+
+
+The analysis focused on how user input was processed by backend queries and whether appropriate safeguards were enforced.
+
+
+
+---
+
+
+
+\## Observation
+
+During controlled testing, application responses varied based on crafted input supplied to a single request parameter.  
+
+These variations indicated that backend query logic was directly influenced by externally supplied data.
+
+
+
+The behavior was consistent across multiple request types, suggesting a systemic issue rather than an isolated bug.
+
+
+
+---
+
+
+
+\## Root Cause
+
+The backend constructed database queries using user-controlled input without sufficient sanitization or parameter binding.
+
+
+
+Key contributing factors:
+
+\- Trust placed on client-supplied values
+
+\- Absence of strict server-side query constraints
+
+\- Legacy backend stack with outdated defensive practices
+
+
+
+---
+
+
+
+\## Security Impact
+
+If abused beyond minimal validation, this issue could allow:
+
+\- Unauthorized access to sensitive applicant records
+
+\- Exposure of personal and identity-related information
+
+\- Large-scale data confidentiality violations
+
+
+
+The potential impact was high due to centralized data storage and uniform query logic.
+
+
+
+---
+
+
+
+\## Validation Approach
+
+To confirm the issue responsibly:
+
+\- Only minimal interaction was performed
+
+\- No automation or mass extraction was conducted
+
+\- No data was stored, modified, or shared
+
+\- Testing was limited strictly to risk confirmation
+
+
+
+At no point was the system disrupted or degraded.
+
+
+
+---
+
+
+
+\## Recommended Mitigation
+
+\- Use parameterized queries or prepared statements exclusively
+
+\- Enforce strict server-side input validation
+
+\- Implement least-privilege database access
+
+\- Add monitoring for abnormal query patterns
+
+\- Conduct regular security reviews of legacy code paths
+
+
+
+---
+
+
+
+\## Ethical Notes
+
+This case study is anonymized by design.
+
+All testing was conducted responsibly and reported through appropriate channels.
+
+
+
+No sensitive details, payloads, or identifiers are included to prevent misuse.
+
+
+
