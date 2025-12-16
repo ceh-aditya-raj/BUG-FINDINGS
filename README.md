@@ -1,81 +1,128 @@
-# BUG-FINDINGS
-A curated portfolio of anonymized vulnerability research, responsible disclosure case studies, and reporting methodologies. Focused on real-world web security flaws, impact analysis, ethical disclosure practices, and structured communication with security teams without exposing targets or sensitive data.
+\# Case Study: Backend Query Handling Failure in an Academic System
 
-# Vulnerability Research & Responsible Disclosure Portfolio
 
-This repository documents my independent security research activities focused on identifying, analyzing, and responsibly reporting real-world security weaknesses in web applications across education, finance, e-commerce, public-facing platforms, and modern web frameworks.
 
-All documentation is anonymized, ethically written, and limited strictly to actions and processes under my control.
+\## Context
 
----
+A public-facing academic web application was analyzed as part of independent security research.  
 
-## Purpose of This Repository
+The system handled admissions-related workflows and processed data at institutional scale.
 
-The goal of this repository is to demonstrate:
 
-- Real-world security analysis skills
-- Ability to reason about application behavior beyond surface-level testing
-- Responsible disclosure discipline
-- Clear technical communication
-- Understanding of modern web architectures and failure patterns
 
-This repository is **not intended for exploitation**, reproduction against live systems, or exposure of sensitive details.
+The analysis focused on how user input was processed by backend queries and whether appropriate safeguards were enforced.
+
+
 
 ---
 
-## Nature of Findings Documented
 
-The research presented here includes security weaknesses identified in:
 
-- Large-scale academic systems handling thousands of user records
-- User-facing platforms processing sensitive personal identity documents
-- Authentication and verification flows in high-traffic applications
-- Applications built using modern JavaScript frameworks and server-side rendering models
-- Educational platforms with role-based and classroom-based access models
+\## Observation
 
-Each finding is documented from the perspective of:
-- How the issue was identified
-- What assumptions failed
-- Why the issue mattered from a security standpoint
-- How it could be mitigated
+During controlled testing, application responses varied based on crafted input supplied to a single request parameter.  
+
+These variations indicated that backend query logic was directly influenced by externally supplied data.
+
+
+
+The behavior was consistent across multiple request types, suggesting a systemic issue rather than an isolated bug.
+
+
 
 ---
 
-## Research Highlights (Anonymized Summary)
 
-The repository includes case studies derived from findings where:
 
-- Backend query handling allowed unintended data exposure at scale due to improper input handling
-- Resource access was determined by user-controlled identifiers without sufficient server-side ownership validation
-- Verification mechanisms could be bypassed due to flawed state handling and trust assumptions
-- Server-side execution paths in modern frontend frameworks were influenced by externally controlled data
-- Predictable application parameters enabled access to restricted or internal information
+\## Root Cause
 
-Exact vulnerability classifications are intentionally documented **only inside individual case study files**.
+The backend constructed database queries using user-controlled input without sufficient sanitization or parameter binding.
 
----
 
-## Educational Platform Case Studies
 
-Special focus is given to multi-layered application logic in educational platforms, including:
+Key contributing factors:
 
-- Unauthorized interactions enabled through classroom-related mechanisms
-- Information exposure resulting from predictable or improperly constrained query parameters
+\- Trust placed on client-supplied values
 
-These cases emphasize **logic and design flaws**, not surface-level misconfigurations.
+\- Absence of strict server-side query constraints
+
+\- Legacy backend stack with outdated defensive practices
+
+
 
 ---
 
-## Responsible Disclosure Approach
 
-All findings documented here followed a consistent and ethical process:
 
-1. Minimal validation to confirm risk
-2. No access beyond what was required to understand impact
-3. No modification, deletion, or misuse of data
-4. No automation against production systems
-5. Clear, structured reporting with remediation guidance
+\## Security Impact
 
-No private communications, responses, acknowledgements, or outcomes are included, as they are outside my control.
+If abused beyond minimal validation, this issue could allow:
+
+\- Unauthorized access to sensitive applicant records
+
+\- Exposure of personal and identity-related information
+
+\- Large-scale data confidentiality violations
+
+
+
+The potential impact was high due to centralized data storage and uniform query logic.
+
+
 
 ---
+
+
+
+\## Validation Approach
+
+To confirm the issue responsibly:
+
+\- Only minimal interaction was performed
+
+\- No automation or mass extraction was conducted
+
+\- No data was stored, modified, or shared
+
+\- Testing was limited strictly to risk confirmation
+
+
+
+At no point was the system disrupted or degraded.
+
+
+
+---
+
+
+
+\## Recommended Mitigation
+
+\- Use parameterized queries or prepared statements exclusively
+
+\- Enforce strict server-side input validation
+
+\- Implement least-privilege database access
+
+\- Add monitoring for abnormal query patterns
+
+\- Conduct regular security reviews of legacy code paths
+
+
+
+---
+
+
+
+\## Ethical Notes
+
+This case study is anonymized by design.
+
+All testing was conducted responsibly and reported through appropriate channels.
+
+
+
+No sensitive details, payloads, or identifiers are included to prevent misuse.
+
+
+
