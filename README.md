@@ -80,4 +80,58 @@ No private communications, responses, acknowledgements, or outcomes are included
 
 ---
 
-## Repository Structure
+## What This Repository Intentionally Avoids
+
+To maintain professional and ethical standards, this repository does **not** include:
+
+- Target names or domain identifiers
+- Proof-of-concept payloads that enable exploitation
+- Screenshots exposing sensitive data
+- Private communications or emails
+- Claims of acknowledgment, rewards, or responses
+
+The focus is on **process and thinking**, not outcomes beyond my control.
+
+---
+
+## Responsible Disclosure Philosophy
+
+Security research carries responsibility.
+
+I follow these principles strictly:
+
+- No public disclosure before remediation
+- No exploitation beyond proof of risk
+- No data access beyond necessity
+- No pressure or coercion in reporting
+- Respect for user privacy and organizational boundaries
+
+If a finding cannot be disclosed responsibly, it is **not documented here**.
+
+---
+
+## Intended Audience
+
+This repository is designed for:
+
+- Security recruiters and hiring managers
+- Cybersecurity mentors and reviewers
+- Blue team and AppSec professionals
+- Students learning real-world security research
+- Anyone interested in ethical vulnerability discovery
+
+---
+
+## Final Note
+
+This repository represents **discipline, restraint, and depth**, not noise.
+
+Every write-up here reflects:
+- Curiosity without recklessness  
+- Skill without ego  
+- Impact without exposure  
+
+Security is not about breaking systems —  
+it’s about **understanding them well enough to protect them**.
+
+
